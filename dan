@@ -1,0 +1,41 @@
+---
+title: "Interactive Plotly Presentation"
+author: "Daniel Cunningham"
+date: "`r format(Sys.Date(), '%B %d, %Y')`"
+output:
+  html_document:
+    self_contained: false
+    theme: cosmo
+    highlight: tango
+    css: styles.css
+---
+
+# Introduction
+
+This presentation showcases an interactive plot created with Plotly.
+
+## Plot
+
+```{r}
+# Load required libraries
+library(plotly)
+
+# Create sample data
+x <- seq(1, 10, by = 0.1)
+y <- sin(x)
+
+# Create Plotly plot
+p <- plot_ly(x = ~x, y = ~y, type = 'scatter', mode = 'lines', name = 'sin(x)')
+
+# Customize layout
+layout <- list(
+  title = "Interactive Plotly Plot",
+  xaxis = list(title = "x"),
+  yaxis = list(title = "sin(x)")
+)
+
+# Combine plot and layout
+p <- layout(p, layout)
+
+# Print the plot
+p
